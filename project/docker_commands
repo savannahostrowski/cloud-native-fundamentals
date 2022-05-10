@@ -1,11 +1,41 @@
 ## Docker commands used to build the application 
-# TODO: insert the docker build command
+docker build -t techtrends .
+docker images
 
 ## Docker commands used to run the application
-# TODO: insert the docker run command
+docker run -p -d 7111:3111 techtrends
+docker ps
 
 ## Docker commands used to get the application logs
-# TODO: insert the docker logs command
+docker logs 40e32f911734
 
 ## Logs from the container running the TechTrends application
-# TODO: paste logs from the Docker container 
+INFO:werkzeug:172.17.0.1 - - [10/May/2022 03:45:00] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [10/May/2022 03:45:00] "GET /static/css/main.css HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [10/May/2022 03:45:00] "GET /favicon.ico HTTP/1.1" 404 -
+INFO:app:Article 2020 CNCF Annual Report was retrieved.
+INFO:werkzeug:172.17.0.1 - - [10/May/2022 03:45:06] "GET /1 HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [10/May/2022 03:45:06] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:werkzeug:172.17.0.1 - - [10/May/2022 03:45:07] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [10/May/2022 03:45:07] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:app:Article KubeCon + CloudNativeCon 2021 was retrieved.
+INFO:werkzeug:172.17.0.1 - - [10/May/2022 03:45:08] "GET /2 HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [10/May/2022 03:45:08] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:werkzeug:172.17.0.1 - - [10/May/2022 03:45:09] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [10/May/2022 03:45:09] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:app:Article Kubernetes v1.20 Release Notes was retrieved.
+INFO:werkzeug:172.17.0.1 - - [10/May/2022 03:45:09] "GET /3 HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [10/May/2022 03:45:09] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:werkzeug:172.17.0.1 - - [10/May/2022 03:45:10] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [10/May/2022 03:45:10] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:app:About Us page was accessed.
+INFO:werkzeug:172.17.0.1 - - [10/May/2022 03:45:11] "GET /about HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [10/May/2022 03:45:11] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:werkzeug:172.17.0.1 - - [10/May/2022 03:45:15] "GET /create HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [10/May/2022 03:45:15] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:app:New article called test was created
+INFO:werkzeug:172.17.0.1 - - [10/May/2022 03:45:18] "POST /create HTTP/1.1" 302 -
+INFO:werkzeug:172.17.0.1 - - [10/May/2022 03:45:18] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [10/May/2022 03:45:18] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:werkzeug:172.17.0.1 - - [10/May/2022 03:45:21] "GET /metrics HTTP/1.1" 200 -
+
