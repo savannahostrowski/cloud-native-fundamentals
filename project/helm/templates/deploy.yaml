@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name:  techtrends
+  name: techtrends
   namespace: {{ .Values.namespace.name }}
 spec:
   selector:
@@ -11,10 +11,10 @@ spec:
   template:
     metadata:
       labels:
-        app:  techtrends
+        app: techtrends
     spec:
       containers:
-        name: techtrends
+        name: techtrends-latest
       - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         livenessProbe:
