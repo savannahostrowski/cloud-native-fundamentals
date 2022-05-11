@@ -4,12 +4,12 @@ metadata:
   name: techtrends
   namespace: {{ .Values.namespace.name }}
 spec:
-  type: ClusterIP
+  type: {{ .Values.service.type }}
   sessionAffinity: None
   sessionAffinityConfig:
     clientIP:
       timeoutSeconds: 10800
   ports:
-  - protocol: TCP
-    port: 4111
-    targetPort: 3111
+  - protocol: {{ .Values.service.protocol }}
+    port: {{ .Values.service.port }}
+    targetPort: {{ .Values.service.targetPort }}

@@ -7,29 +7,24 @@ spec:
   selector:
     matchLabels:
       app: techtrends
-  replicas: 1
+  replicas: {{ .Values.replicaCount }}
   template:
     metadata:
       labels:
         app:  techtrends
     spec:
       containers:
-      - name:  techtrends
-        image: seaquenched/techtrends:latest
+      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
         resources:
-          requests:
-            cpu: 250m
-            memory: 64Mi
-          limits:
-            cpu: 500m
-            memory: 128Mi
+{{ toYaml .Values.resources | indent 12 }}
         livenessProbe:
          httpGet:
-          port: 3111
-          path: /healthz
+          path: {{ .Values.livenessProbe.httpGet.path }}
+          port: {{ .Values.ports.containerPort }}
         readinessProbe:
           httpGet:
-            path: /healthz
-            port: 3111
+            path: {{ .Values.livenessProbe.httpGet.path }}
+            port: {{ .Values.ports.containerPort }}
         ports:
-        - containerPort:  3111
+        - containerPort: {{ .Values.ports.containerPort }}
