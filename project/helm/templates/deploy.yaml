@@ -16,8 +16,6 @@ spec:
       containers:
       - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
-        resources:
-{{ toYaml .Values.resources | indent 12 }}
         livenessProbe:
          httpGet:
           path: {{ .Values.livenessProbe.httpGet.path }}
@@ -28,3 +26,5 @@ spec:
             port: {{ .Values.ports.containerPort }}
         ports:
         - containerPort: {{ .Values.ports.containerPort }}
+        resources:
+{{ toYaml .Values.resources | indent 12 }}
