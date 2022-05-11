@@ -1,22 +1,32 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: techtrends
-  namespace: {{ .Values.namespace.name }}
+  labels:
+    app: techtrends
+    tag: latest
+  name: techtrends-latest
+  namespace: {{ .Values.namespace.name }} 
 spec:
+  replicas: {{ .Values.replicaCount }} 
   selector:
     matchLabels:
       app: techtrends
-  replicas: {{ .Values.replicaCount }}
+      tag: latest
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
   template:
     metadata:
       labels:
         app: techtrends
+        tag: latest
     spec:
       containers:
-        name: techtrends-latest
       - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
+        name: techtrends-latest
         livenessProbe:
          httpGet:
           path: {{ .Values.livenessProbe.httpGet.path }}
