@@ -12,4 +12,4 @@ spec:
   ports:
   - protocol: {{ .Values.service.protocol }}
     port: {{ .Values.service.port }}
-    targetPort: {{ .Values.service.targetPort }}
+    targetPort: {{ .Values.service.targetPort | default .Values.service.port }}
