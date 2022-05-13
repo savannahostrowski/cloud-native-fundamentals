@@ -3,10 +3,19 @@ from multiprocessing import Value
 import sqlite3
 import sys
 
-from flask import Flask, jsonify, json, render_template, request, url_for, redirect, flash
-from werkzeug.exceptions import abort
+from flask import Flask, json, render_template, request, url_for, redirect, flash
 
-logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
+
+logger = logging.getLogger()
+logger.setLevel(logging.NOTSET)
+
+logging_stdout = logging.StreamHandler(sys.stdout)
+logging_stdout.setLevel(logging.DEBUG)
+logger.addHandler(logging_stdout)
+
+logging_stderr = logging.StreamHandler(sys.stderr)
+logging_stderr.setLevel(logging.WARNING)
+logger.addHandler(logging_stderr)
 
 connectionCounter = Value("i", 0)
 
@@ -44,7 +53,7 @@ def index():
 def post(post_id):
     post = get_post(post_id)
     if post is None:
-      app.logger.info('404 - Article does not exist')
+      app.logger.warning('404 - Article does not exist')
       return render_template('404.html'), 404
     else:
       app.logger.info('Article {} was retrieved.'.format(post['title']))
