@@ -9,12 +9,10 @@ from flask import Flask, json, render_template, request, url_for, redirect, flas
 logger = logging.getLogger()
 logger.setLevel(logging.NOTSET)
 
-logging_stdout = logging.StreamHandler(sys.stdout)
-logging_stdout.setLevel(logging.DEBUG)
+logging_stdout = logging.StreamHandler(sys.stdout).setLevel(logging.DEBUG)
 logger.addHandler(logging_stdout)
 
-logging_stderr = logging.StreamHandler(sys.stderr)
-logging_stderr.setLevel(logging.WARNING)
+logging_stderr = logging.StreamHandler(sys.stderr).setLevel(logging.WARNING)
 logger.addHandler(logging_stderr)
 
 connectionCounter = Value("i", 0)
